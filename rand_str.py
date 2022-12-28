@@ -12,7 +12,8 @@ text=tkinter.Text(window)
 text.config(width=800, height=5, font=10)
 
 def on_click():
-    #bg_ser에서 만든 리스트 받아와서 random 함수로 한개 들고 오기
+    random.random()
+    
 
 btn = tkinter.Button(window,text = 'btn',background ='white', command=)
 

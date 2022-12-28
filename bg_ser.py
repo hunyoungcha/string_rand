@@ -22,6 +22,3 @@ for q in range(len(file_list)):
         continue
 d.close()
 
-def str_list():
-    f=[]
-    #txt 받아와서 리스트로 만들어서 사용
