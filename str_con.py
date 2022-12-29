@@ -1,3 +1,5 @@
+#all_data.txt에서 받아온 데이터를 list화 시켜서 재조립하는 코드
+
 import random
 
 f=[]

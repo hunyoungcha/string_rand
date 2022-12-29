@@ -1,4 +1,4 @@
-#keyword button
+#기본이 되는 코드
 
 from tkinter import *
 import tkinter
@@ -18,10 +18,6 @@ def on_click():
     
 btn = tkinter.Button(window,text = 'btn',background ='white', command=on_click)
 btn.bind('f',on_click)
-
-    
-
-
 
 
 # 버튼 옵션설정
