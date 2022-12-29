@@ -8,6 +8,7 @@ file_list=os.listdir(path)
 
 
 d=open('all_data.txt', 'a', encoding='utf-8')
+
 for q in range(len(file_list)):
     f= ol.OleFileIO(path+file_list[q])
     try:
@@ -16,7 +17,7 @@ for q in range(len(file_list)):
         li=decod_text.split("\n")[2:]
         
         for i in li:
-            if i.split('>')[1].split('<')[1] !='공결':
+            if i.split('>')[1].split('<')[1] !='공결' and 4<len(i.split('>')[1].split('<')[1]):
                 d.write(f"{i.split('>')[1].split('<')[1]}\n")
     except:
         continue
