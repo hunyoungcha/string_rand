@@ -1,4 +1,4 @@
-#기본이 되는 코드
+#tkinter로 화면에 띄우는 코드
 
 from tkinter import *
 import tkinter
