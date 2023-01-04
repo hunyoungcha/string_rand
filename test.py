@@ -1,6 +1,11 @@
-import re
+from openpyxl import load_workbook
+from openpyxl import Workbook
 
-pattern = re.compile(r'[ㄱ-ㅣ가-힣]')
-results = re.findall(pattern, '')
+wb=load_workbook('database.xlsx')
+ws=wb['database']
 
-print(results)
+ws['A1']='hello'
+ws['A2']='world'
+
+wb.save("database.xlsx")
+

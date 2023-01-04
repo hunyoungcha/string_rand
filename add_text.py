@@ -2,15 +2,16 @@
 
 import os
 import hwp_text as ht
+from openpyxl import load_workbook
+from openpyxl import Workbook
 
-from pprint import pprint
 #파일 위치 및 리스트
 path="rhksckf/"
 file_list=os.listdir(path)
 
 
 g=[]
-user_dict={'name':'','obs':'','note':''}
+
 
 
 #hwp의 받아온 텍스트를 name obs note의 프레임으로 만들어 temp.txt에 저장
@@ -31,28 +32,26 @@ def add_temp():
                     temp.write(f[i])
     temp.close()
 
-#temp 에서 all_data로 기준에 맞는 값만 옮기는 함수
-#중간 중간 관찰내용이 아니라 이름이 들어가 있는 경우가 많음 ,고쳐야함
-def temp_data_cont():
+#temp 에서 엑셀로 옮기는 함수
+def temp_to_exl():
+    #엑셀 열기
+    wb=load_workbook('database.xlsx')
+    ws=wb['database']
+    #temp.txt 열기
     t=open('temp.txt','r', encoding='utf-8')
     data_list=t.readlines()
     t.close()
-    
-    tmp=[]
-    for i in data_list:
-        q=i.split('\n')[0]
-        if len(q)>3:
-            tmp.append(q)
-    
-    ad=open('all_data.txt','w', encoding='utf-8')
-    for i in range(0,len(tmp),2):
-        ad.write(tmp[i]+'\n')
-    ad.close()
-  
 
+    cnt=0
+    for i in range(1,(len(data_list)//3)+1): #row
+        for j in range(1,4): #column   
+            if 
+                while True:
+                    ws.cell(row=i,column=j,value=data_list[cnt].split('\n')[0])
+                    cnt+=1
+                    break
+            except:
+                print()
+    wb.save('database.xlsx')
 
-    # ad=open('all_data.txt','w', encoding='utf-8')
-    # for i in range(1,len(data_list),3):
-    #     ad.write(data_list[i])
-
-temp_data_cont()
+temp_to_exl()
