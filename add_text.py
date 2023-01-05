@@ -23,17 +23,18 @@ def add_temp():
         f=hwp_text.split('\n')
 
         for i in range(5,len(f)):
-            if f[i].isspace()==False:
-                if '공결' in f[i] or '코로나' in f[i] or '(' in f[i]:
-                    temp.write(f[i])
+            g=f[i].replace(' ','')
+            if g.isspace()==False :
+                if '공결' in g or '코로나' in g or '(' in g:
+                    temp.write(g)
                     temp.write('공결\n')
-                    i+=1
+                    i+=1 
                 else:
-                    temp.write(f[i])
+                    temp.write(g)
     temp.close()
 
 #temp 에서 엑셀로 옮기는 함수
-def temp_to_exl():
+def temp_to_xslx():
     #엑셀 열기
     wb=load_workbook('database.xlsx')
     ws=wb['database']
@@ -45,13 +46,11 @@ def temp_to_exl():
     cnt=0
     for i in range(1,(len(data_list)//3)+1): #row
         for j in range(1,4): #column   
-            if 
+            if data_list[i][0].isalpha():
                 while True:
                     ws.cell(row=i,column=j,value=data_list[cnt].split('\n')[0])
                     cnt+=1
                     break
-            except:
-                print()
     wb.save('database.xlsx')
 
-temp_to_exl()
+add_temp()
