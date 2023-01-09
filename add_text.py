@@ -21,16 +21,18 @@ def add_temp():
     for q in file_list:
         hwp_text=ht.get_hwp_text(path+q)
         f=hwp_text.split('\n')
+        for i in f:
+            temp.write(i)
 
-        for i in range(5,len(f)):
-            g=f[i].replace(' ','')
-            if g.isspace()==False :
-                if '공결' in g or '코로나' in g or '(' in g:
-                    temp.write(g)
-                    temp.write('공결\n')
-                    i+=1 
-                else:
-                    temp.write(g)
+        # for i in range(5,len(f)):
+        #     g=f[i].replace(' ','')
+        #     if g.isspace()==False :
+        #         if '공결' in g or '코로나' in g or '(' in g:
+        #             temp.write(g)
+        #             temp.write('공결\n')
+        #             i+=1 
+        #         else:
+        #             temp.write(g)
     temp.close()
 
 #temp 에서 엑셀로 옮기는 함수
@@ -48,9 +50,14 @@ def temp_to_xslx():
         for j in range(1,4): #column   
             if data_list[i][0].isalpha():
                 while True:
-                    ws.cell(row=i,column=j,value=data_list[cnt].split('\n')[0])
-                    cnt+=1
-                    break
+                    try:
+                        ws.cell(row=i,column=j,value=data_list[cnt].split('\n')[0])
+                        cnt+=1
+                        break
+                    except:
+                        ws.cell(row=i,column=j,value='공결')
+                        cnt+=1
+                        break
     wb.save('database.xlsx')
 
 add_temp()
